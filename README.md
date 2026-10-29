@@ -27,7 +27,7 @@ godot --headless --path . --script tests/test_game.gd
 godot --headless --path . --export-release Web builds/web/index.html
 ```
 
-Web kabuğu için `PatrickHand-Regular.ttf`, `DynaPuff.ttf`, `night-library.png`, `icon.png` dosyalarını ilgili asset klasörlerinden `builds/web/` içine kopyalayın. `.github/workflows/pages.yml` bunu otomatik yapar. Yerel test:
+Web kabuğu için `PatrickHand-Regular.ttf`, `DynaPuff.ttf`, `night-library-web.png`, `icon.png` dosyalarını ilgili asset klasörlerinden `builds/web/` içine kopyalayın. Arka planın web kopyasını çıktı klasöründe `night-library.png` olarak adlandırın. `.github/workflows/pages.yml` bunu otomatik yapar. Yerel test:
 
 ```sh
 python -m http.server 8073 --directory builds/web
@@ -37,9 +37,9 @@ python -m http.server 8073 --directory builds/web
 
 ## Grafikler ve netlik
 
-Tüm arayüz ikonları **PNG**'dir. Yüzeyler, 20 gezinme/kategori ikonu, dokuz avatar ve dört dekor **tek bir 2048 × 4032 RGBA PNG atlasından** alınır. Arka plan ayrı bir PNG'dir. Atlas pikselleri paketlenirken yeniden örneklenmez. Bölge verileri `assets/atlases/regions.json` içindedir. Detaylar ve üretim istemleri: [docs/ASSETS.md](docs/ASSETS.md).
+Tüm arayüz ikonları **PNG**'dir. Yüzeyler, 20 gezinme/kategori ikonu, dokuz avatar ve dört dekor **tek bir 2048 × 4032 şeffaf PNG atlasından** alınır. Arka plan ayrı bir PNG'dir. Atlasın çözünürlüğü değiştirilmez. Web kopyaları 256 renkli paletle optimize edilir; özgün RGBA kaynaklar korunur. Bölge verileri `assets/atlases/regions.json` içindedir. Detaylar ve üretim istemleri: [docs/ASSETS.md](docs/ASSETS.md).
 
-Yazılar görsellere gömülmez. Türkçe karakterleri kapsayan Patrick Hand ve DynaPuff, MSDF ile çizilir. Web canvas boyutu `CSS boyutu × devicePixelRatio` olarak ayarlanır; düşük çözünürlükte çizip CSS ile büyütme yapılmaz. `canvas_items` kullanılır. Doku atlası kayıpsız içe aktarılır; bulanıklaştıran CSS filtreleri kullanılmaz.
+Yazılar görsellere gömülmez. Türkçe karakterleri kapsayan Patrick Hand ve DynaPuff, MSDF ile çizilir. Web canvas boyutu `CSS boyutu × devicePixelRatio` olarak ayarlanır; düşük çözünürlükte çizip CSS ile büyütme yapılmaz. `canvas_items` kullanılır. Doku atlasının paletli PNG verisi kayıpsız içe aktarılır; bulanıklaştıran CSS filtreleri kullanılmaz.
 
 Atlası kaynak PNG'lerden yeniden üretmek için isteğe bağlı Pillow aracı:
 

@@ -6,14 +6,14 @@
 
 | Yol | İçerik |
 | --- | --- |
-| `assets/art/night-library.png` | 916 × 1717 gece kitaplığı, sarmaşıklar, fenerler, kitaplar, uyuyan kedi |
-| `assets/atlases/game-atlas.png` | 2048 × 4032, kayıpsız RGBA; 8 yüzey, 20 ikon, 9 avatar, 4 dekor |
+| `assets/art/night-library-web.png` | 916 × 1717 gece kitaplığı, sarmaşıklar, fenerler, kitaplar, uyuyan kedi |
+| `assets/atlases/game-atlas.png` | 2048 × 4032, 256 renkli şeffaf PNG; 8 yüzey, 20 ikon, 9 avatar, 4 dekor |
 | `assets/atlases/regions.json` | Atlas kırpımları ve grupları |
 | `assets/icon.png` | PNG uygulama simgesi; atlasın kitap çiziminden |
 | `assets/source_art/*.png` | Imagegen'den alınan özgün yüzey, ikon, avatar, dekor ve kategori sprite sayfaları |
 | `assets/source_art/source-regions.json` | Paketleme öncesi kaynak bölgeleri |
 
-41 sprite tek dokuyu paylaşır. Kaynak grafikler paketlenirken küçültülmedi, keskinleştirme/üretken büyütme uygulanmadı. `pack_atlas.py` kırpımları 4 piksel aralıklarla düzenler. Orijinal sayfalar `.gdignore` altındadır; yalnızca bitmiş atlas dışa aktarılır. PNG'ler kayıpsız içe aktarılır. Kullanılmayan ilk krem/tilki tasarım denemeleri web paketine alınmaz.
+41 sprite tek dokuyu paylaşır. Kaynak grafiklerin çözünürlüğü küçültülmedi; keskinleştirme/üretken büyütme uygulanmadı. Web kopyalarında 256 renkli palet kullanılır: çok ince renk geçişleri sadeleşir, şekil kenarları ve boyutları korunur. Özgün renkleri içeren `assets/source_art/game-atlas-master.png` ve `assets/art/night-library.png` saklanır. `pack_atlas.py` kırpımları 4 piksel aralıklarla düzenler. Orijinal sayfalar `.gdignore` altındadır; yalnızca bitmiş atlas dışa aktarılır. Paletli PNG'ler Godot'a kayıpsız içe aktarılır. Kullanılmayan ilk krem/tilki tasarım denemeleri web paketine alınmaz.
 
 ## Son üretim istemleri
 

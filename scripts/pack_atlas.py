@@ -1,4 +1,4 @@
-"""Pack generated PNG artwork losslessly; no resizing or blurred upscaling.
+"""Pack generated PNG artwork at native resolution; palette-optimize web copies.
 
 Optional authoring tool: python scripts/pack_atlas.py (requires Pillow).
 The prebuilt PNG is committed, so Godot/CI does not depend on Python.
@@ -61,9 +61,14 @@ def main():
         canvas.paste(image, (x, y))
         output[group][index] = [x, y, image.width, image.height]
     OUTPUT.mkdir(exist_ok=True)
-    canvas.save(OUTPUT / "game-atlas.png", optimize=True)
+    # Keep the full RGBA master. Indexed PNG reduces paper-grain entropy without
+    # resizing the ink, UI corners or glyphs (text remains separate MSDF fonts).
+    canvas.save(SOURCE / "game-atlas-master.png", optimize=True)
+    canvas.quantize(colors=256, method=Image.Quantize.FASTOCTREE, dither=Image.Dither.NONE).save(OUTPUT / "game-atlas.png", optimize=True)
+    background = Image.open(ROOT / "assets/art/night-library.png").convert("RGBA")
+    background.quantize(colors=256, method=Image.Quantize.FASTOCTREE, dither=Image.Dither.NONE).save(ROOT / "assets/art/night-library-web.png", optimize=True)
     (OUTPUT / "regions.json").write_text(json.dumps(output, indent=2)+"\n")
-    print(f"{len(placed)} PNG sprites -> {WIDTH}x{height}; original pixels preserved")
+    print(f"{len(placed)} PNG sprites -> {WIDTH}x{height}; native resolution, 256-color web palette")
 
 
 if __name__ == "__main__":

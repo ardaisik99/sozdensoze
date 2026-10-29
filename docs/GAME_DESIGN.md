@@ -62,8 +62,8 @@ Webde IndexedDB izinleri ve tarayıcı depolama ömrü geçerlidir. Bu yerel pro
 ## 9. Optimizasyon ve netlik
 
 - Oyun mantığı GDScript, 2D Compatibility/WebGL 2, tek iş parçacıklı web dışa aktarımı. GitHub Pages özel COOP/COEP başlıklarına ihtiyaç duymaz.
-- Ortak 2048 × 4032 kayıpsız RGBA atlası: 41 yüzey/ikon/avatar/dekor. Arka plan ayrı PNG. Kaynak kırpımları yeniden boyutlandırılmadan paketlenir; 4 px aralık, filtre kırpması ve önbelleğe alınan AtlasTexture kaynakları kullanılır.
-- PNG nine-slice sınırları 3× kaynak ölçekte çizilerek yüksek yoğunlukta keskin köşeler korunur. Her ikon için ayrı doku yüklenmez.
+- Ortak 2048 × 4032 şeffaf PNG atlası: 41 yüzey/ikon/avatar/dekor. Arka plan ayrı PNG. Kaynak kırpımları yeniden boyutlandırılmadan paketlenir; 4 px aralık, filtre kırpması ve önbelleğe alınan AtlasTexture kaynakları kullanılır.
+- PNG nine-slice sınırları 3× kaynak ölçekte çizilerek yüksek yoğunlukta keskin köşeler korunur. Her ikon için ayrı doku yüklenmez. Web kopyasında 256 renkli palet kullanılarak gürültülü kâğıt dokularının aktarım boyutu azaltılır; orijinal RGBA master korunur.
 - Düşük çözünürlüklü viewport'u büyütmek yerine canvas_items ve gerçek devicePixelRatio kullanılır. MSDF yazılar PNG'ye gömülmez. CSS blur/backdrop-filter yoktur.
 - Sürekli `_process` yoktur. Menü çizimi durağandır; düşük işlemci kullanım modu ve 60 FPS üst sınır vardır. Maç sayacı saniyede bir çalışır. Geçişler kısa Tween, konfeti sınırlı sayıda nesnedir; hareket azaltılabilir.
 - Kayıt yazımı birleştirilir. Sesler küçük, bellekte oluşturulan PCM efektleridir; büyük ses dosyaları indirilmez.
