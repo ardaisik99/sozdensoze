@@ -29,6 +29,8 @@ jobs:
           mkdir -p builds/web
           godot --headless --path . --export-release Web builds/web/index.html
           cp assets/fonts/PatrickHand-Regular.ttf assets/fonts/DynaPuff.ttf assets/art/night-library.png assets/icon.png builds/web/
+          mkdir -p builds/web/licenses
+          cp assets/licenses/*.txt assets/fonts/*-OFL.txt builds/web/licenses/
           touch builds/web/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
