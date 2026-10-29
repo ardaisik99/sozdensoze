@@ -1,0 +1,38 @@
+name: Build lean Godot web engine
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['build/lean_web.py', '.github/workflows/lean-web.yml']
+permissions:
+  contents: read
+concurrency:
+  group: lean-web-engine
+  cancel-in-progress: true
+jobs:
+  engine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get official Godot source and Emscripten
+        run: |
+          git clone --depth 1 --branch 4.5.2-stable https://github.com/godotengine/godot.git "$RUNNER_TEMP/godot"
+          git clone --depth 1 https://github.com/emscripten-core/emsdk.git "$RUNNER_TEMP/emsdk"
+          "$RUNNER_TEMP/emsdk/emsdk" install 4.0.11
+          "$RUNNER_TEMP/emsdk/emsdk" activate 4.0.11
+          python -m pip install scons==4.9.1
+      - name: Build a 2D-only release template
+        run: |
+          source "$RUNNER_TEMP/emsdk/emsdk_env.sh"
+          cp build/lean_web.py "$RUNNER_TEMP/godot/custom.py"
+          cd "$RUNNER_TEMP/godot"
+          scons platform=web target=template_release arch=wasm32 -j2
+          mkdir -p "$GITHUB_WORKSPACE/engine-output"
+          cp bin/*.zip "$GITHUB_WORKSPACE/engine-output/"
+          git rev-parse HEAD > "$GITHUB_WORKSPACE/engine-output/godot-revision.txt"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: godot-web-4.5.2-ui
+          path: engine-output/
+          retention-days: 60
