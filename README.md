@@ -25,9 +25,10 @@ Godot 4.5.2 ile geliştirilen, yalnızca Türkçe çalışan mobil zincir kelime
 godot --headless --editor --import --quit
 godot --headless --path . --script tests/test_game.gd
 godot --headless --path . --export-release Web builds/web/index.html
+python scripts/prepare_web.py
 ```
 
-Web kabuğu için `PatrickHand-Regular.ttf`, `DynaPuff.ttf`, `night-library-web.png`, `icon.png` dosyalarını ilgili asset klasörlerinden `builds/web/` içine kopyalayın. Arka planın web kopyasını çıktı klasöründe `night-library.png` olarak adlandırın. `.github/workflows/pages.yml` bunu otomatik yapar. Yerel test:
+`prepare_web.py` standart Python kütüphanesiyle fontları, web arka planını, lisansları ve `download.mjs` dosyasını kopyalar; motorun `.wasm.gz` kopyasını hazırlar. `.github/workflows/pages.yml` bunu otomatik yapar. Yerel test:
 
 ```sh
 python -m http.server 8073 --directory builds/web
@@ -70,3 +71,5 @@ Tasarım, ekonomi, ağ planı ve optimizasyon kararları için [docs/GAME_DESIGN
 Chromium tabanlı web önizlemesi ve mobil boyutlandırma kontrol edildi. Fiziksel iPhone/Android cihaz performansı henüz ölçülmedi; APK/IPA üretilmedi. Çevrimiçi sunucu, hesap sistemi ve İngilizce içerik bu sürümün parçası değildir.
 
 Font lisansları `assets/fonts/*-OFL.txt` içindedir. Godot MIT lisansıyla dağıtılır: https://godotengine.org/license/.
+
+Motor, destekleyen sunucularda sıkıştırılmış 256 KiB parçalar hâlinde ve en fazla üç eşzamanlı istekle indirilir. Kesilen parça en fazla üç kez denenir; akış hatasında Yeniden Dene gösterilir. Range veya gzip akış desteği yoksa standart Godot yüklemesine dönülür. Bu katmanın altı ağ/bozuk veri testi `node --test tests/download.test.mjs` ile çalışır.

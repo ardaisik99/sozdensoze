@@ -49,7 +49,8 @@
 </main>
 <noscript>Bu Godot oyununu açmak için JavaScript'i etkinleştir.</noscript>
 <script src="$GODOT_URL"></script>
-<script>
+<script type="module">
+  import { createWasmFetch } from './download.mjs';
   const canvas = document.getElementById('canvas');
   const frame = document.getElementById('frame');
   const loading = document.getElementById('loading');
@@ -74,7 +75,12 @@
     console.error(error);
   }
   try {
-    const engine = new Engine($GODOT_CONFIG);
+    const config = $GODOT_CONFIG;
+    const wasmURL = new URL(config.executable + '.wasm', location.href).href;
+    globalThis.fetch = createWasmFetch({wasmURL,
+      rawSize:config.fileSizes[config.executable + '.wasm'],
+      originalFetch:globalThis.fetch.bind(globalThis),onError:fail});
+    const engine = new Engine(config);
     const missing = Engine.getMissingFeatures({threads:false});
     if(missing.length) throw new Error('Gerekli tarayıcı özellikleri: ' + missing.join(', '));
     engine.startGame({canvas,canvasResizePolicy:0,locale:'tr',

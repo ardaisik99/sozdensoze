@@ -24,15 +24,13 @@ jobs:
         run: godot --headless --editor --import --quit
       - name: Run gameplay tests
         run: godot --headless --path . --script tests/test_game.gd
+      - name: Test resilient web download
+        run: node --test tests/download.test.mjs
       - name: Export release
         run: |
           mkdir -p builds/web
           godot --headless --path . --export-release Web builds/web/index.html
-          cp assets/fonts/PatrickHand-Regular.ttf assets/fonts/DynaPuff.ttf assets/icon.png builds/web/
-          cp assets/art/night-library-web.png builds/web/night-library.png
-          mkdir -p builds/web/licenses
-          cp assets/licenses/*.txt assets/fonts/*-OFL.txt builds/web/licenses/
-          touch builds/web/.nojekyll
+          python scripts/prepare_web.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
