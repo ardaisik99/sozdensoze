@@ -332,8 +332,7 @@ func show_create_profile(edit: bool = false) -> void:
 	avatar_choice = Profile.data.avatar
 	panel(38, 190, 404, 421)
 	label("Profilini Düzenle" if edit else "Hoş Geldin!", 58, 225, 364, 65, 42, INK, true, true)
-	paragraph("Oyuna başlamak için
-adını yaz.", 70, 310, 340, 72, 25, INK)
+	paragraph("Oyuna başlamak için\nadını yaz.", 70, 310, 340, 72, 25, INK)
 	name_field = field(Profile.data.name, "Kullanıcı adın…", 72, 411, 336, 61, 16)
 	name_field.focus_entered.connect(show_name_keyboard)
 	name_field.text_submitted.connect(func(_value): _save_name())
@@ -356,11 +355,17 @@ func field(value: String, placeholder: String, x: float, y: float, w: float, h: 
 	f.add_theme_color_override("font_color", INK)
 	f.add_theme_color_override("caret_color", GREEN)
 	f.add_theme_color_override("font_placeholder_color", MUTED)
-	var box = png_skin(2).duplicate()
+	var box = StyleBoxEmpty.new()
 	box.content_margin_left = 18
+	box.content_margin_right = 18
 	f.add_theme_stylebox_override("normal", box)
 	f.add_theme_stylebox_override("focus", box)
 	rect(f, x, y, w, h, parent)
+	var background = Surface.new()
+	background.skin = png_skin(4)
+	background.show_behind_parent = true
+	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	rect(background, 0, 0, w, h, f)
 	return f
 
 func _save_name() -> void:
@@ -848,10 +853,7 @@ func show_together() -> void:
 	round_timer.stop()
 	clear("together")
 	header("Oyun Modu Seç")
-	var modes = [["Tek Oyunculu", "Kendine oyna.
-Bölümleri tamamla.", "book", func(): start_level(Profile.next_level())], ["Çok Oyunculu", "Diğer oyuncularla yarış.
-Şimdilik yerel antrenman.", "people", show_race_lobby], ["Parti Modu", "Telefonu sırayla paylaş.
-Arkadaşınla birlikte oyna.", "party", show_party_setup]]
+	var modes = [["Tek Oyunculu", "Kendine oyna.\nBölümleri tamamla.", "book", func(): start_level(Profile.next_level())], ["Çok Oyunculu", "Diğer oyuncularla yarış.\nŞimdilik yerel antrenman.", "people", show_race_lobby], ["Parti Modu", "Telefonu sırayla paylaş.\nArkadaşınla birlikte oyna.", "party", show_party_setup]]
 	for i in modes.size():
 		var row = modes[i]
 		var y = 180 + i * 195
