@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="theme-color" content="#17132f">
+  <meta name="description" content="Bir kelimeden kocaman bir hikâyeye. Sözden Söze, sıcacık bir Türkçe zincir kelime bulmaca oyunu. Godot ile yapıldı.">
+  <title>Sözden Söze · Her kelime bir yolculuk</title>
+  <link rel="icon" href="index.icon.png">
+  <style>
+    @font-face{font-family:Nunito;src:url('PatrickHand-Regular.ttf')}@font-face{font-family:Lora;src:url('DynaPuff.ttf')}
+    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}
+    body{background:#100d1c;color:#ffedc1;font-family:Nunito,system-ui,sans-serif;background-image:radial-gradient(#a49b7924 .6px,transparent .6px);background-size:7px 7px}
+    main{display:flex;align-items:center;justify-content:center;gap:clamp(35px,7vw,100px);width:100%;height:100%;padding:20px}
+    aside{display:none}aside .eyebrow{font-size:11px;letter-spacing:3px;color:#a271df;font-weight:800}
+    h1{font:500 56px/1.18 Lora,Georgia,serif;letter-spacing:-2px;margin:26px 0 24px}aside p{font-size:17px;line-height:1.8;color:#837c69;max-width:300px}
+    .rule{height:1px;background:#cbc6b1;width:56px;margin:30px 0}.tag{display:inline-block;padding:8px 12px;border:1px solid #c9cfbd;border-radius:9px;font-size:12px;color:#667660;margin:4px 6px 4px 0}
+    .note{font-size:12px!important;margin-top:30px;color:#96907e!important}a{color:inherit;text-underline-offset:4px}
+    #frame{position:relative;width:min(480px,calc((100dvh - 40px)*.533333));height:min(900px,calc(100dvh - 40px));overflow:hidden;background:#17132f;border-radius:26px;border:1px solid #5d3c78;box-shadow:0 20px 65px #48432c18,0 3px 6px #48432c09;flex-shrink:0}
+    canvas{display:block;width:100%;height:100%;outline:none;touch-action:none}
+    #loading{position:absolute;inset:0;background:#17132f;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2;padding:28px;text-align:center;transition:opacity .3s;background-image:linear-gradient(#17132f66,#17132f66),url('night-library.png');background-size:cover;background-position:center}
+    #loading h2{font:650 43px Lora,Georgia,serif;margin:0 0 13px}.sprout{font-size:35px;color:#a271df;margin-bottom:24px}
+    #loading p{font-size:14px;color:#ffedc1;line-height:1.8}progress{margin-top:25px;width:200px;height:7px;border:none;border-radius:8px;overflow:hidden;background:#36204d;accent-color:#a271df}progress::-webkit-progress-bar{background:#36204d}progress::-webkit-progress-value{background:#a271df;border-radius:8px}
+    #retry{display:none;border:0;border-radius:12px;padding:13px 24px;background:#a271df;color:#fffaf0;font:600 16px Nunito;cursor:pointer;margin-top:16px}
+    @media(max-width:850px){aside{display:none}main{padding:0}#frame{width:min(100vw,calc(100dvh * .533333));height:min(100dvh,calc(100vw * 1.875));max-height:none;border:0;border-radius:0;box-shadow:none}body{background:#17132f}}
+    @media(prefers-reduced-motion:reduce){#loading{transition:none}}
+  </style>
+  $GODOT_HEAD_INCLUDE
+</head>
+<body>
+<main>
+  <aside>
+    <div class="eyebrow">BİRAZ MERAK. BİRAZ KELİME.</div>
+    <h1>Her kelime<br>bir yolculuk.</h1>
+    <p>Bir fincan çayını al.<br>Kelimelerin birbirine bağlandığı<br>küçük bir dünyaya adım at.</p>
+    <div class="rule"></div>
+    <span class="tag">33 küçük hikâye</span><span class="tag">Türkçe kelimeler</span><span class="tag">Kendi hızında</span>
+    <p class="note">Dokunarak ya da klavyenle oyna.<br>İlerlemen bu tarayıcıda saklanır.<br><br><a href="https://github.com/ardaisik99/sozdensoze" target="_blank" rel="noopener">Godot ile, özenle yapıldı ↗</a></p>
+  </aside>
+  <section id="frame" aria-label="Sözden Söze oyunu">
+    <canvas id="canvas" tabindex="0" aria-label="Sözden Söze. Dokunmatik ekranı veya klavyeyi kullanarak oyna.">Oynamak için WebGL 2 ve WebAssembly destekleyen bir tarayıcı gerekiyor.</canvas>
+    <div id="loading" role="status" aria-live="polite">
+      <img class="loading-art" src="icon.png" width="88" height="64" alt=""><h2>Sözden<br>Söze</h2>
+      <p id="status">Küçük bir dünya hazırlanıyor…</p><progress id="progress" max="100" value="0"></progress>
+      <p id="detail">İlk açılış internet hızına göre biraz sürebilir.</p>
+      <button id="retry" type="button">Yeniden dene</button>
+    </div>
+  </section>
+</main>
+<noscript>Bu Godot oyununu açmak için JavaScript'i etkinleştir.</noscript>
+<script src="$GODOT_URL"></script>
+<script>
+  const canvas = document.getElementById('canvas');
+  const frame = document.getElementById('frame');
+  const loading = document.getElementById('loading');
+  const progress = document.getElementById('progress');
+  const statusText = document.getElementById('status');
+  function resizeCanvas(){
+    const dpr = Math.max(1, window.devicePixelRatio || 1);
+    const width = Math.round(frame.clientWidth * dpr);
+    const height = Math.round(frame.clientHeight * dpr);
+    if(canvas.width !== width) canvas.width = width;
+    if(canvas.height !== height) canvas.height = height;
+  }
+  new ResizeObserver(resizeCanvas).observe(frame);
+  resizeCanvas();
+  document.getElementById('retry').addEventListener('click', () => location.reload());
+  function fail(error){
+    loading.style.display = 'flex';
+    statusText.textContent = 'Oyunu açarken bir sorun oluştu.';
+    document.getElementById('detail').textContent = 'İnternet bağlantını kontrol edip yeniden dene. WebGL 2 destekleyen güncel bir tarayıcı kullan.';
+    document.getElementById('retry').style.display = 'block';
+    progress.hidden = true;
+    console.error(error);
+  }
+  try {
+    const engine = new Engine($GODOT_CONFIG);
+    const missing = Engine.getMissingFeatures({threads:false});
+    if(missing.length) throw new Error('Gerekli tarayıcı özellikleri: ' + missing.join(', '));
+    engine.startGame({canvas,canvasResizePolicy:0,locale:'tr',
+      onProgress(current,total){if(total>0){progress.value=Math.round(current/total*100);statusText.textContent='Kelimeler yükleniyor… %'+progress.value;}},
+      onExit(code){if(code!==0) fail(new Error('Godot exit '+code));}
+    }).then(()=>{loading.style.opacity='0';setTimeout(()=>loading.remove(),300);canvas.focus();}).catch(fail);
+  } catch(error){fail(error);}
+</script>
+</body>
+</html>

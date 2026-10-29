@@ -1,0 +1,737 @@
+[
+  {
+    "id": "mutfak-01",
+    "category": "Mutfak",
+    "title": "Bir fincan başlangıç",
+    "words": [
+      "ÇAY",
+      "KAŞIK",
+      "OYUN",
+      "HAVA"
+    ],
+    "hints": [
+      "",
+      "Karıştırmaya yarayan mutfak aleti.",
+      "Kuralları olan eğlenceli etkinlik.",
+      "Soluduğumuz, gözle göremediğimiz şey."
+    ],
+    "links": [
+      "Çay kaşığı",
+      "Kaşık oyunu",
+      "Oyun havası"
+    ]
+  },
+  {
+    "id": "mutfak-02",
+    "category": "Mutfak",
+    "title": "Kahve molası",
+    "words": [
+      "KAHVE",
+      "FİNCAN",
+      "TAKIM",
+      "ELBİSE"
+    ],
+    "hints": [
+      "",
+      "Türk kahvesinin küçük kabı.",
+      "Birlikte kullanılan eşyaların bütünü.",
+      "Giydiğimiz, tek parçalı bir giysi."
+    ],
+    "links": [
+      "Kahve fincanı",
+      "Fincan takımı",
+      "Takım elbise"
+    ]
+  },
+  {
+    "id": "mutfak-03",
+    "category": "Mutfak",
+    "title": "Sofrada ışık",
+    "words": [
+      "YEMEK",
+      "MASA",
+      "LAMBA",
+      "IŞIK"
+    ],
+    "hints": [
+      "",
+      "Üzerine tabaklarımızı koyduğumuz mobilya.",
+      "Karanlığı aydınlatan araç.",
+      "Görmemizi sağlayan aydınlık."
+    ],
+    "links": [
+      "Yemek masası",
+      "Masa lambası",
+      "Lamba ışığı"
+    ]
+  },
+  {
+    "id": "mutfak-04",
+    "category": "Mutfak",
+    "title": "Kavanozdaki hikâye",
+    "words": [
+      "REÇEL",
+      "KAVANOZ",
+      "KAPAK",
+      "RESİM"
+    ],
+    "hints": [
+      "",
+      "Reçel saklanan cam kap.",
+      "Bir kabın ağzını örten parça.",
+      "Çizilerek ya da boyanarak yapılan görüntü."
+    ],
+    "links": [
+      "Reçel kavanozu",
+      "Kavanoz kapağı",
+      "Kapak resmi"
+    ]
+  },
+  {
+    "id": "mutfak-05",
+    "category": "Mutfak",
+    "title": "Fırından yeni çıktı",
+    "words": [
+      "EKMEK",
+      "FIRIN",
+      "KAPI",
+      "KOL"
+    ],
+    "hints": [
+      "",
+      "Ekmeğin piştiği sıcak yer.",
+      "Bir yere girmek için açtığımız bölüm.",
+      "Omuzdan ele uzanan uzuv."
+    ],
+    "links": [
+      "Ekmek fırını",
+      "Fırın kapısı",
+      "Kapı kolu"
+    ]
+  },
+  {
+    "id": "mutfak-06",
+    "category": "Mutfak",
+    "title": "Tatlı bir tarif",
+    "words": [
+      "ŞEKER",
+      "HAMUR",
+      "İŞ",
+      "YER"
+    ],
+    "hints": [
+      "",
+      "Un ve suyla yoğrulan karışım.",
+      "Bir sonuç için yapılan çalışma.",
+      "Bir şeyin bulunduğu konum."
+    ],
+    "links": [
+      "Şeker hamuru",
+      "Hamur işi",
+      "İş yeri"
+    ]
+  },
+  {
+    "id": "mutfak-07",
+    "category": "Mutfak",
+    "title": "Lezzetin peşinde",
+    "words": [
+      "ZEYTİN",
+      "ÇEKİRDEK",
+      "KABUK",
+      "TARÇIN"
+    ],
+    "hints": [
+      "",
+      "Meyvenin içindeki sert tohum.",
+      "Bir şeyin dışını saran tabaka.",
+      "Çubuk olarak da kullanılan kokulu baharat."
+    ],
+    "links": [
+      "Zeytin çekirdeği",
+      "Çekirdek kabuğu",
+      "Kabuk tarçın"
+    ]
+  },
+  {
+    "id": "mutfak-08",
+    "category": "Mutfak",
+    "title": "Son bir yudum",
+    "words": [
+      "ÇAY",
+      "BARDAK",
+      "ALT",
+      "KAT",
+      "PLAN"
+    ],
+    "hints": [
+      "",
+      "Çay ve su içtiğimiz kap.",
+      "Bir şeyin aşağıdaki bölümü.",
+      "Bir yapının üst üste sıralanan bölümlerinden biri.",
+      "Bir yapının düzenini gösteren çizim."
+    ],
+    "links": [
+      "Çay bardağı",
+      "Bardak altı",
+      "Alt kat",
+      "Kat planı"
+    ]
+  },
+  {
+    "id": "doga-01",
+    "category": "Doğa",
+    "title": "Yağmurdan sonra",
+    "words": [
+      "YAĞMUR",
+      "SU",
+      "DEĞİRMEN",
+      "TAŞ"
+    ],
+    "hints": [
+      "",
+      "Susuzluğumuzu gideren sıvı.",
+      "Tahılı öğüten yapı.",
+      "Doğada bulunan sert mineral parçası."
+    ],
+    "links": [
+      "Yağmur suyu",
+      "Su değirmeni",
+      "Değirmen taşı"
+    ]
+  },
+  {
+    "id": "doga-02",
+    "category": "Doğa",
+    "title": "Kır bahçesi",
+    "words": [
+      "ÇİÇEK",
+      "BAHÇE",
+      "DUVAR",
+      "SAAT"
+    ],
+    "hints": [
+      "",
+      "Çiçeklerin yetiştiği küçük yeşil alan.",
+      "Bir alanı çevreleyen dik yapı.",
+      "Zamanı gösteren araç."
+    ],
+    "links": [
+      "Çiçek bahçesi",
+      "Bahçe duvarı",
+      "Duvar saati"
+    ]
+  },
+  {
+    "id": "doga-03",
+    "category": "Doğa",
+    "title": "Deniz kıyısında",
+    "words": [
+      "DENİZ",
+      "YILDIZ",
+      "TOZ",
+      "BULUT"
+    ],
+    "hints": [
+      "",
+      "Gece gökyüzünde parlayan gök cismi.",
+      "Çok küçük, uçuşan parçacıklar.",
+      "Gökyüzündeki su damlacığı kümesi."
+    ],
+    "links": [
+      "Deniz yıldızı",
+      "Yıldız tozu",
+      "Toz bulutu"
+    ]
+  },
+  {
+    "id": "doga-04",
+    "category": "Doğa",
+    "title": "Ormanda bir ev",
+    "words": [
+      "ORMAN",
+      "YOL",
+      "HARİTA",
+      "BİLGİ"
+    ],
+    "hints": [
+      "",
+      "Bir yerden diğerine gitmek için izlenen güzergâh.",
+      "Yeryüzünü küçülterek gösteren çizim.",
+      "Öğrenme yoluyla edinilen birikim."
+    ],
+    "links": [
+      "Orman yolu",
+      "Yol haritası",
+      "Harita bilgisi"
+    ]
+  },
+  {
+    "id": "doga-05",
+    "category": "Doğa",
+    "title": "Güneşli bir sabah",
+    "words": [
+      "GÜNEŞ",
+      "IŞIK",
+      "HIZ",
+      "SINIR"
+    ],
+    "hints": [
+      "",
+      "Aydınlanmamızı sağlayan şey.",
+      "Bir şeyin ne kadar çabuk ilerlediği.",
+      "Aşılmaması gereken çizgi ya da ölçü."
+    ],
+    "links": [
+      "Güneş ışığı",
+      "Işık hızı",
+      "Hız sınırı"
+    ]
+  },
+  {
+    "id": "doga-06",
+    "category": "Doğa",
+    "title": "Kış masalı",
+    "words": [
+      "KAR",
+      "TOP",
+      "OYUN",
+      "ALAN"
+    ],
+    "hints": [
+      "",
+      "Yuvarlak bir oyun aracı.",
+      "Eğlenmek için yapılan kurallı etkinlik.",
+      "Belirli bir amaç için ayrılmış yer."
+    ],
+    "links": [
+      "Kar topu",
+      "Top oyunu",
+      "Oyun alanı"
+    ]
+  },
+  {
+    "id": "doga-07",
+    "category": "Doğa",
+    "title": "Dalından sofraya",
+    "words": [
+      "ELMA",
+      "AĞAÇ",
+      "KABUK",
+      "TARÇIN"
+    ],
+    "hints": [
+      "",
+      "Gövdesi ve dalları olan büyük bitki.",
+      "Bir şeyin dışını saran sert tabaka.",
+      "Çubuk hâlinde de kullanılan kokulu baharat."
+    ],
+    "links": [
+      "Elma ağacı",
+      "Ağaç kabuğu",
+      "Kabuk tarçın"
+    ]
+  },
+  {
+    "id": "doga-08",
+    "category": "Doğa",
+    "title": "Rüzgârı dinle",
+    "words": [
+      "RÜZGÂR",
+      "GÜL",
+      "BAHÇE",
+      "KAPI",
+      "ZİL"
+    ],
+    "hints": [
+      "",
+      "Güzel kokulu, dikenli bir çiçek.",
+      "Çiçeklerin ve ağaçların yetiştiği alan.",
+      "Bir yere girip çıkarken açılan bölüm.",
+      "Kapıya gelenin bastığı sesli araç."
+    ],
+    "links": [
+      "Rüzgâr gülü",
+      "Gül bahçesi",
+      "Bahçe kapısı",
+      "Kapı zili"
+    ]
+  },
+  {
+    "id": "yasam-01",
+    "category": "Günlük Yaşam",
+    "title": "Yeni bir sayfa",
+    "words": [
+      "KİTAP",
+      "SAYFA",
+      "NUMARA",
+      "LEVHA"
+    ],
+    "hints": [
+      "",
+      "Bir kitabın yapraklarının her bir yüzü.",
+      "Bir şeyi belirtmek için verilen sayı.",
+      "Üzerinde bilgi yazan düz plaka."
+    ],
+    "links": [
+      "Kitap sayfası",
+      "Sayfa numarası",
+      "Numara levhası"
+    ]
+  },
+  {
+    "id": "yasam-02",
+    "category": "Günlük Yaşam",
+    "title": "Okul yolu",
+    "words": [
+      "OKUL",
+      "ÇANTA",
+      "FERMUAR",
+      "DİŞ"
+    ],
+    "hints": [
+      "",
+      "Eşyalarımızı taşıdığımız saplı kap.",
+      "İki kenarı birbirine bağlayan dişli düzenek.",
+      "Ağzımızda yiyecekleri çiğneyen sert yapı."
+    ],
+    "links": [
+      "Okul çantası",
+      "Çanta fermuarı",
+      "Fermuar dişi"
+    ]
+  },
+  {
+    "id": "yasam-03",
+    "category": "Günlük Yaşam",
+    "title": "Yoldaki hikâyeler",
+    "words": [
+      "TREN",
+      "İSTASYON",
+      "BİNA",
+      "KAPI"
+    ],
+    "hints": [
+      "",
+      "Trenlerin durup yolcu aldığı yer.",
+      "İçinde yaşanan ya da çalışılan yapı.",
+      "Bir yapının girişindeki açılır kapanır bölüm."
+    ],
+    "links": [
+      "Tren istasyonu",
+      "İstasyon binası",
+      "Bina kapısı"
+    ]
+  },
+  {
+    "id": "yasam-04",
+    "category": "Günlük Yaşam",
+    "title": "Postacı geldi",
+    "words": [
+      "MEKTUP",
+      "ZARF",
+      "PUL",
+      "KOLEKSİYON"
+    ],
+    "hints": [
+      "",
+      "Mektubun içine konulduğu kâğıt kılıf.",
+      "Posta ücretinin ödendiğini gösteren küçük etiket.",
+      "Benzer nesneleri biriktirerek oluşturulan bütün."
+    ],
+    "links": [
+      "Mektup zarfı",
+      "Zarf pulu",
+      "Pul koleksiyonu"
+    ]
+  },
+  {
+    "id": "yasam-05",
+    "category": "Günlük Yaşam",
+    "title": "Müzik molası",
+    "words": [
+      "MÜZİK",
+      "KUTU",
+      "OYUN",
+      "HAMUR"
+    ],
+    "hints": [
+      "",
+      "Eşya saklamaya yarayan kap.",
+      "Eğlenmek için yapılan etkinlik.",
+      "Çocukların şekil verdiği yumuşak malzeme."
+    ],
+    "links": [
+      "Müzik kutusu",
+      "Kutu oyunu",
+      "Oyun hamuru"
+    ]
+  },
+  {
+    "id": "yasam-06",
+    "category": "Günlük Yaşam",
+    "title": "Evde bir akşam",
+    "words": [
+      "EV",
+      "KAPI",
+      "KOL",
+      "SAAT"
+    ],
+    "hints": [
+      "",
+      "Bir yapının girişindeki açılır kapanır bölüm.",
+      "Omuzdan ele uzanan uzuv.",
+      "Zamanı gösteren araç."
+    ],
+    "links": [
+      "Ev kapısı",
+      "Kapı kolu",
+      "Kol saati"
+    ]
+  },
+  {
+    "id": "yasam-07",
+    "category": "Günlük Yaşam",
+    "title": "Şehrin ritmi",
+    "words": [
+      "SOKAK",
+      "LAMBA",
+      "IŞIK",
+      "HIZ"
+    ],
+    "hints": [
+      "",
+      "Gece sokakları aydınlatan araç.",
+      "Görmeyi sağlayan aydınlık.",
+      "Alınan yolun zamana oranı."
+    ],
+    "links": [
+      "Sokak lambası",
+      "Lamba ışığı",
+      "Işık hızı"
+    ]
+  },
+  {
+    "id": "yasam-08",
+    "category": "Günlük Yaşam",
+    "title": "Hikâye devam ediyor",
+    "words": [
+      "HİKÂYE",
+      "KİTAP",
+      "KAPAK",
+      "RESİM",
+      "ÇERÇEVE"
+    ],
+    "hints": [
+      "",
+      "Sayfaları bir araya getirilmiş okuma eseri.",
+      "Kitabın dışını koruyan bölüm.",
+      "Çizilen ya da boyanan görüntü.",
+      "Bir resmi çevreleyen kenarlık."
+    ],
+    "links": [
+      "Hikâye kitabı",
+      "Kitap kapağı",
+      "Kapak resmi",
+      "Resim çerçevesi"
+    ]
+  },
+  {
+    "id": "hayvan-01",
+    "category": "Hayvanlar",
+    "title": "Minik bir pati",
+    "words": [
+      "KEDİ",
+      "GÖZ",
+      "BEBEK",
+      "ARABA"
+    ],
+    "hints": [
+      "",
+      "Görmemizi sağlayan organ.",
+      "Yeni doğmuş küçük insan.",
+      "Tekerlekleriyle yol alan taşıt."
+    ],
+    "links": [
+      "Kedi gözü",
+      "Göz bebeği",
+      "Bebek arabası"
+    ]
+  },
+  {
+    "id": "hayvan-02",
+    "category": "Hayvanlar",
+    "title": "Kanatların altında",
+    "words": [
+      "KUŞ",
+      "YUVA",
+      "YAPI",
+      "MALZEME"
+    ],
+    "hints": [
+      "",
+      "Kuşların barındığı küçük ev.",
+      "İnşa edilmiş bina ya da oluşum.",
+      "Bir şey yaparken kullanılan gereç."
+    ],
+    "links": [
+      "Kuş yuvası",
+      "Yuva yapısı",
+      "Yapı malzemesi"
+    ]
+  },
+  {
+    "id": "hayvan-03",
+    "category": "Hayvanlar",
+    "title": "Suyun altındaki dünya",
+    "words": [
+      "BALIK",
+      "AĞ",
+      "ÖRGÜ",
+      "İŞ"
+    ],
+    "hints": [
+      "",
+      "Balık tutmak için kullanılan ipli düzenek.",
+      "İpliklerin ilmeklerle birleşmesiyle yapılan şey.",
+      "Emek verilerek yapılan çalışma."
+    ],
+    "links": [
+      "Balık ağı",
+      "Ağ örgüsü",
+      "Örgü işi"
+    ]
+  },
+  {
+    "id": "sehir-01",
+    "category": "Ülkeler & Şehirler",
+    "title": "Şehrin kalbinde",
+    "words": [
+      "ŞEHİR",
+      "MERKEZ",
+      "BANKA",
+      "HESAP"
+    ],
+    "hints": [
+      "",
+      "Bir yerin orta bölümü.",
+      "Para saklayan ve finansal işlem yapan kurum.",
+      "Bir bankadaki para kaydı."
+    ],
+    "links": [
+      "Şehir merkezi",
+      "Merkez bankası",
+      "Banka hesabı"
+    ]
+  },
+  {
+    "id": "sehir-02",
+    "category": "Ülkeler & Şehirler",
+    "title": "Meydanın saati",
+    "words": [
+      "KÖY",
+      "MEYDAN",
+      "SAAT",
+      "KULE"
+    ],
+    "hints": [
+      "",
+      "İnsanların toplandığı açık alan.",
+      "Zamanı gösteren araç.",
+      "Uzun ve dar, yüksek yapı."
+    ],
+    "links": [
+      "Köy meydanı",
+      "Meydan saati",
+      "Saat kulesi"
+    ]
+  },
+  {
+    "id": "sehir-03",
+    "category": "Ülkeler & Şehirler",
+    "title": "Yolun ötesinde",
+    "words": [
+      "ÜLKE",
+      "SINIR",
+      "KAPI",
+      "KOL"
+    ],
+    "hints": [
+      "",
+      "İki yeri ayıran çizgi.",
+      "Bir yere girerken açtığımız bölüm.",
+      "Omuzdan ele uzanan uzuv."
+    ],
+    "links": [
+      "Ülke sınırı",
+      "Sınır kapısı",
+      "Kapı kolu"
+    ]
+  },
+  {
+    "id": "esya-01",
+    "category": "Eşyalar",
+    "title": "Küçük bir anahtar",
+    "words": [
+      "KAPI",
+      "ANAHTAR",
+      "HALKA",
+      "KÜPE"
+    ],
+    "hints": [
+      "",
+      "Kilidi açan küçük metal araç.",
+      "İçi boş, yuvarlak çember.",
+      "Kulağa takılan takı."
+    ],
+    "links": [
+      "Kapı anahtarı",
+      "Anahtar halkası",
+      "Halka küpe"
+    ]
+  },
+  {
+    "id": "esya-02",
+    "category": "Eşyalar",
+    "title": "Sofranın danteli",
+    "words": [
+      "MASA",
+      "ÖRTÜ",
+      "KENAR",
+      "SÜS"
+    ],
+    "hints": [
+      "",
+      "Bir yüzeyi kaplayan kumaş.",
+      "Bir şeyin bitiş çizgisi, kıyısı.",
+      "Güzelleştirmek için eklenen bezek."
+    ],
+    "links": [
+      "Masa örtüsü",
+      "Örtü kenarı",
+      "Kenar süsü"
+    ]
+  },
+  {
+    "id": "esya-03",
+    "category": "Eşyalar",
+    "title": "Bir tutam renk",
+    "words": [
+      "KOLTUK",
+      "KILIF",
+      "KUMAŞ",
+      "BOYA"
+    ],
+    "hints": [
+      "",
+      "Bir eşyayı korumak için üzerine geçirilen örtü.",
+      "İpliklerin dokunmasıyla oluşan malzeme.",
+      "Bir yüzeye renk veren madde."
+    ],
+    "links": [
+      "Koltuk kılıfı",
+      "Kılıf kumaşı",
+      "Kumaş boyası"
+    ]
+  }
+]

@@ -1,0 +1,46 @@
+name: Godot Web · GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.5.2
+          use-dotnet: false
+          include-templates: true
+      - name: Import resources
+        run: godot --headless --editor --import --quit
+      - name: Run gameplay tests
+        run: godot --headless --path . --script tests/test_game.gd
+      - name: Export release
+        run: |
+          mkdir -p builds/web
+          godot --headless --path . --export-release Web builds/web/index.html
+          cp assets/fonts/PatrickHand-Regular.ttf assets/fonts/DynaPuff.ttf assets/art/night-library.png assets/icon.png builds/web/
+          touch builds/web/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: builds/web
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish
+        id: deployment
+        uses: actions/deploy-pages@v4
