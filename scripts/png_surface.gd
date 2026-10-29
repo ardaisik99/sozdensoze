@@ -11,5 +11,6 @@ func _ready() -> void:
 func _draw() -> void:
 	if skin == null:
 		return
-	draw_set_transform(Vector2.ZERO, 0, Vector2.ONE / 3.0)
-	skin.draw(get_canvas_item(), Rect2(Vector2.ZERO, size * 3.0))
+	var source_scale = float(skin.get_meta("source_scale", 3.0))
+	draw_set_transform(Vector2.ZERO, 0, Vector2.ONE / source_scale)
+	skin.draw(get_canvas_item(), Rect2(Vector2.ZERO, size * source_scale))

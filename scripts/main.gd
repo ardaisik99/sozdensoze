@@ -94,7 +94,7 @@ func atlas(group: String, index: int) -> AtlasTexture:
 	var key = group + str(index)
 	if texture_cache.has(key):
 		return texture_cache[key]
-	var source = {"surfaces": UI_ATLAS, "icons": ICON_ATLAS, "avatars": AVATAR_ATLAS, "decor": DECOR_ATLAS, "categories": ICON_ATLAS}[group]
+	var source = {"surfaces": UI_ATLAS, "icons": ICON_ATLAS, "avatars": AVATAR_ATLAS, "decor": DECOR_ATLAS, "categories": ICON_ATLAS, "keys": UI_ATLAS}[group]
 	var region = regions[group][index]
 	var texture = AtlasTexture.new()
 	texture.atlas = source
@@ -107,9 +107,10 @@ func png_skin(index: int) -> StyleBoxTexture:
 	if skin_cache.has(index):
 		return skin_cache[index]
 	var skin = StyleBoxTexture.new()
-	skin.texture = atlas("surfaces", index)
+	skin.texture = atlas("surfaces", index) if index < 4 else atlas("keys", index - 4)
+	skin.set_meta("source_scale", 3.0 if index < 4 else 6.0)
 	for edge in [SIDE_LEFT, SIDE_TOP, SIDE_RIGHT, SIDE_BOTTOM]:
-		skin.set_texture_margin(edge, 54 if index == 0 else 42)
+		skin.set_texture_margin(edge, 72 if index >= 4 else 54 if index == 0 else 42)
 	skin_cache[index] = skin
 	return skin
 
@@ -163,7 +164,10 @@ func style(color: Color, border: Color = LINE, radius: int = 18, shadow: int = 0
 
 func panel(x: float, y: float, w: float, h: float, color: Color = PAPER, parent: Node = null, _radius: int = 18) -> Panel:
 	var p = Surface.new()
-	p.skin = png_skin(3 if color == SAGE else 1 if color == GREEN or color == BG else 0)
+	var skin_index = 3 if color == SAGE else 1 if color == GREEN or color == BG else 0
+	if w <= 60 and h <= 70:
+		skin_index = 5 if color == SAGE else 4
+	p.skin = png_skin(skin_index)
 	p.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	rect(p, x, y, w, h, parent)
 	return p
@@ -224,7 +228,10 @@ func button(text: String, x: float, y: float, w: float, h: float, action: Callab
 	rect(b, x, y, w, h, parent)
 	var surface = Surface.new()
 	surface.name = "Surface"
-	surface.skin = png_skin(1 if color == GREEN or color == BG or color == CLAY else 3 if color == SAGE else 2)
+	var skin_index = 1 if color == GREEN or color == BG or color == CLAY else 3 if color == SAGE else 2
+	if w < 90 and h < 61:
+		skin_index = 5 if color == SAGE else 4
+	surface.skin = png_skin(skin_index)
 	surface.show_behind_parent = true
 	surface.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	rect(surface, 0, 0, w, h, b)
@@ -296,16 +303,18 @@ func nav(selected: String) -> void:
 func show_loading() -> void:
 	clear("loading")
 	logo(232, Color("c6a0f0"))
-	var progress = ProgressBar.new()
-	progress.show_percentage = false
-	progress.add_theme_stylebox_override("background", png_skin(1))
-	var fill = png_skin(2).duplicate()
-	fill.modulate_color = GOLD
-	progress.add_theme_stylebox_override("fill", fill)
-	rect(progress, 90, 812, 300, 28)
+	var bar = Surface.new()
+	bar.skin = png_skin(6)
+	rect(bar, 90, 812, 300, 28)
+	var progress = Control.new()
+	progress.clip_contents = true
+	rect(progress, 90, 812, 0, 28)
+	var fill = Surface.new()
+	fill.skin = png_skin(7)
+	rect(fill, 0, 0, 300, 28, progress)
 	label("Yükleniyor…", 40, 848, 400, 32, 21, PAPER, true)
 	var t = create_tween().bind_node(page)
-	t.tween_property(progress, "value", 100.0, 1.2)
+	t.tween_property(progress, "size:x", 300.0, 1.2)
 	t.tween_callback(func():
 		if Profile.data.name.is_empty():
 			show_create_profile()
@@ -532,17 +541,20 @@ func show_game() -> void:
 	input_locked = false
 	clear("game")
 	header("İlk kelimelerin" if tutorial else "Bölüm %02d" % [level_index + 1], leave_game)
+	var status_strip = Surface.new()
+	status_strip.skin = png_skin(4)
+	rect(status_strip, 24, 85, 432, 60 if mode == "race" else 39)
 	if mode == "party":
-		label("%s  ·  Tur %d / 3" % [party_names[party_turn], party_round + 1], 30, 86, 315, 33, 20, PAPER)
-		clock_label = label("%d sn" % time_left, 344, 87, 100, 33, 22, GOLD, true)
+		label("%s  ·  Tur %d / 3" % [party_names[party_turn], party_round + 1], 30, 86, 315, 33, 20, INK)
+		clock_label = label("%d sn" % time_left, 344, 87, 100, 33, 22, CLAY, true)
 	elif mode == "race":
-		label("ANTRENMAN · YEREL DEMO", 28, 87, 285, 27, 15, PAPER)
+		label("ANTRENMAN · YEREL DEMO", 28, 87, 285, 27, 15, INK)
 		clock_label = label("%d sn" % time_left, 349, 85, 97, 33, 22, GOLD, true)
-		race_label = label("Sen: %d  ·  Tilki: %d" % [race_score, ghost_score], 30, 115, 338, 29, 18, PAPER)
+		race_label = label("Sen: %d  ·  Tilki: %d" % [race_score, ghost_score], 30, 115, 338, 29, 18, DARK_GREEN)
 		text_button("Mesaj", 375, 113, 75, 30, show_messages)
 	else:
-		label("ÖĞRETİCİ" if tutorial else current_level().category.to_upper(), 30, 88, 305, 28, 15, PAPER)
-		label("%d / %d bağlantı" % [step, current_level().words.size() - 1], 308, 88, 142, 28, 15, PAPER, true)
+		label("ÖĞRETİCİ" if tutorial else current_level().category.to_upper(), 40, 88, 285, 28, 17, INK)
+		label("%d / %d bağlantı" % [step, current_level().words.size() - 1], 298, 88, 142, 28, 17, INK, true)
 	label(current_level().title, 29, 146, 422, 39, 25, INK, true, true)
 	var y_start = 204
 	var words = current_level().words
@@ -576,7 +588,7 @@ func show_game() -> void:
 		help_text = current_level().hints[step]
 	panel(26, 538, 428, 57, PEACH, null, 15)
 	icon("bulb", 39, 552, 25, CLAY)
-	paragraph(help_text, 77, 542, 360, 49, 15, INK, false)
+	paragraph(help_text, 77, 542, 360, 49, 18, INK, false)
 	if mode == "solo" or tutorial:
 		button("Harf al  ·  " + ("Ücretsiz" if tutorial else "20"), 28, 637, 205, 48, buy_letter, PAPER, null, true)
 		button("İpucu  ·  " + ("Ücretsiz" if tutorial else "10"), 247, 637, 205, 48, buy_hint, PAPER, null, true)

@@ -7,13 +7,13 @@
 | Yol | İçerik |
 | --- | --- |
 | `assets/art/night-library.png` | 916 × 1717 gece kitaplığı, sarmaşıklar, fenerler, kitaplar, uyuyan kedi |
-| `assets/atlases/game-atlas.png` | 2048 × 3072, kayıpsız RGBA; 4 yüzey, 20 ikon, 9 avatar, 4 dekor |
+| `assets/atlases/game-atlas.png` | 2048 × 4032, kayıpsız RGBA; 8 yüzey, 20 ikon, 9 avatar, 4 dekor |
 | `assets/atlases/regions.json` | Atlas kırpımları ve grupları |
 | `assets/icon.png` | PNG uygulama simgesi; atlasın kitap çiziminden |
 | `assets/source_art/*.png` | Imagegen'den alınan özgün yüzey, ikon, avatar, dekor ve kategori sprite sayfaları |
 | `assets/source_art/source-regions.json` | Paketleme öncesi kaynak bölgeleri |
 
-37 sprite tek dokuyu paylaşır. Kaynak grafikler paketlenirken küçültülmedi, keskinleştirme/üretken büyütme uygulanmadı. `pack_atlas.py` kırpımları 4 piksel aralıklarla düzenler. Orijinal sayfalar `.gdignore` altındadır; yalnızca bitmiş atlas dışa aktarılır. PNG'ler kayıpsız içe aktarılır. Kullanılmayan ilk krem/tilki tasarım denemeleri web paketine alınmaz.
+41 sprite tek dokuyu paylaşır. Kaynak grafikler paketlenirken küçültülmedi, keskinleştirme/üretken büyütme uygulanmadı. `pack_atlas.py` kırpımları 4 piksel aralıklarla düzenler. Orijinal sayfalar `.gdignore` altındadır; yalnızca bitmiş atlas dışa aktarılır. PNG'ler kayıpsız içe aktarılır. Kullanılmayan ilk krem/tilki tasarım denemeleri web paketine alınmaz.
 
 ## Son üretim istemleri
 
@@ -33,3 +33,5 @@ Her istemde yüklenen pano **exact visual reference** olarak verildi; çıktı m
 - MSDF içe aktarımı: 96 px, 16 px kenar aralığı. Yazılar PNG'ye dönüştürülmez; küçük ekran ve retina ölçeklerinde yeniden keskin çizilir.
 
 Font lisans metinleri `assets/fonts/PatrickHand-OFL.txt` ve `DynaPuff-OFL.txt` içinde korunur.
+
+7. **Klavye tuşları:** “Transparent 2×2 atlas of four clean empty rounded keycaps: ivory cream, pale lavender, royal violet, honey gold. Thin dark ink outline, restrained paper texture, large uniform center, no tape, torn edges, scratches, lettering or icons. Designed to remain readable at 30px width.”

@@ -37,7 +37,7 @@ python -m http.server 8073 --directory builds/web
 
 ## Grafikler ve netlik
 
-Tüm arayüz ikonları **PNG**'dir. Yüzeyler, 20 gezinme/kategori ikonu, dokuz avatar ve dört dekor **tek bir 2048 × 3072 RGBA PNG atlasından** alınır. Arka plan ayrı bir PNG'dir. Atlas pikselleri paketlenirken yeniden örneklenmez. Bölge verileri `assets/atlases/regions.json` içindedir. Detaylar ve üretim istemleri: [docs/ASSETS.md](docs/ASSETS.md).
+Tüm arayüz ikonları **PNG**'dir. Yüzeyler, 20 gezinme/kategori ikonu, dokuz avatar ve dört dekor **tek bir 2048 × 4032 RGBA PNG atlasından** alınır. Arka plan ayrı bir PNG'dir. Atlas pikselleri paketlenirken yeniden örneklenmez. Bölge verileri `assets/atlases/regions.json` içindedir. Detaylar ve üretim istemleri: [docs/ASSETS.md](docs/ASSETS.md).
 
 Yazılar görsellere gömülmez. Türkçe karakterleri kapsayan Patrick Hand ve DynaPuff, MSDF ile çizilir. Web canvas boyutu `CSS boyutu × devicePixelRatio` olarak ayarlanır; düşük çözünürlükte çizip CSS ile büyütme yapılmaz. `canvas_items` kullanılır. Doku atlası kayıpsız içe aktarılır; bulanıklaştıran CSS filtreleri kullanılmaz.
 
